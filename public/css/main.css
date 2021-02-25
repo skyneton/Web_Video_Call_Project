@@ -1,0 +1,1653 @@
+* {
+    outline: none;
+} *::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+} *::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    background-color: rgba(24, 24, 24, 0.3);
+}
+
+.userSettingMenu, .roomMenu_showMenu, .roomMenu_roolet, .roomMenu_vote, .roomVote_addItem {
+    -ms-user-select: none;
+    -moz-user-select: -moz-none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    user-select:none;
+}
+
+.alert, .prompt, .confirm {
+    position: fixed;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 400px;
+    min-width: 150px;
+    width: 80vw;
+    z-index: 100;
+    left: 0;
+    right: 0;
+    top: 4px;
+    background-color: white;
+    box-shadow: 0px 0px 4px black;
+    border-radius: 4px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.al_okbtn {
+    color: white;
+    background-color: rgb(0, 81, 255);
+    margin-top: 20px;
+    border: 1px solid blue;
+    border-radius: 3px;
+    width: 50px;
+    height: 30px;
+    align-self: flex-end;
+}
+
+.al_buttonBox {
+    align-self: flex-end;
+}
+
+.al_cancelbtn {
+    color: rgb(0, 81, 255);
+    background-color: white;
+    margin-top: 20px;
+    border: 1px solid gray;
+    border-radius: 3px;
+    width: 50px;
+    height: 30px;
+    align-self: flex-end;
+    margin-left: 15px;
+}
+
+.al_inputBox {
+    height: 20px;
+    margin-top: 15px;
+}
+
+/*시작 화면(닉네임 입력) */
+#startUIMenu {
+    display: flex;
+    justify-content: center;
+}
+
+#startUIMenu > div {
+    position: absolute;
+    top: 20%;
+    border: 2px solid black;
+    width: 280px;
+    height: 150px;
+}
+
+.serverStart {
+    display: block;
+    background-color: black;
+    color: white;
+    width: 230px;
+    height: 35px;
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 16px;
+} .serverStart:active {
+    background-color: rgb(70, 70, 70);
+}
+
+#startNameSetting {
+    margin-top: 15px;
+    display: block;
+    box-sizing: border-box;
+    width: 230px;
+    height: 45px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
+    text-align: center;
+} #startNameSetting:focus {
+    border-color: skyblue;
+}
+/* 시작화면 끝*/
+
+.mainRoom {
+    display: none;
+}
+
+/*alert start*/
+
+.alertList {
+    z-index: 10;
+    position: relative;
+    left: 0;
+    top: 0;
+    right: 0;
+    flex-shrink: 0;
+    margin: 0;
+    padding: 0;
+    padding-bottom: 4px;
+    flex-direction: column;
+    transition: all 0.5s;
+    max-height: 180px;
+    overflow-y: auto;
+}
+
+.alertWarningMessage, .alertMessage, .alertBroadcastMessage {
+    display: flex;
+    margin-left: 6px;
+    margin-right: 6px;
+    margin-top: 5px;
+    min-height: 32px;
+    padding: 3px 7px;
+    border-radius: 14px;
+    box-sizing: border-box;
+    justify-content: space-between;
+    box-shadow: 2px 2px 4px gray;
+}
+
+.alertBroadcastMessage {
+    background-color: white;
+    box-shadow: 0 0 5px black;
+}
+
+.alertMessage {
+    background-color: turquoise;
+}
+
+.alertWarningMessage {
+    background-color: red;
+}
+
+.alertWarningMessage > button, .alertMessage > button {
+    background-color: #00000000;
+    border: none;
+    color: white;
+    font-size: 23px;
+    margin-right: 7px;
+    font-weight: bold;
+}
+
+.alertBroadcastMessage > button {
+    background-color: #00000000;
+    border: none;
+    color: black;
+    font-size: 23px;
+    margin-right: 7px;
+    font-weight: bold;
+}
+
+.alertList > * > span {
+    word-break: break-all;
+    margin-right: 10px;
+    color: white;
+}
+
+.alertBroadcastMessage > span {
+    color: black;
+}
+
+/*alert end*/
+
+.mainRoom {
+    display: none;
+}
+
+/*side bar */
+.mainRoom_sidebar {
+    z-index: 1;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 45px;
+    background-color: rgb(240, 240, 240);
+    box-shadow: 1px 0px 5px gray;
+    transition: all 0.5s;
+    box-sizing: border-box;
+    padding-top: 10px;
+    -ms-user-select: none;
+    -moz-user-select: -moz-none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    user-select:none;
+} .mainRoom_sidebar:hover {
+    width: 160px;
+} .mainRoom_sidebar:hover span {
+    color: black;
+    width: 80px;
+    height: 40px;
+    padding-top: 10px;
+} .mainRoom_sidebar:hover ~ .mainRoom_menu > .alertList {
+    margin-left: 110px;
+    
+}
+
+.mainRoom_sidebar span {
+    display: inline-block;
+    font-size: 18px;
+    color: #00000000;
+    transition: all 0.6s;
+    margin-left: 10px;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.mainRoom_sidebar > div > img {
+    width: 35px;
+    height: 35px;
+}
+.mainRoom_sidebar > div {
+    padding: 5px;
+} .mainRoom_sidebar > div:hover {
+    background-color: lightseagreen;
+} .mainRoom_sidebar > div:hover > span {
+    color: white;
+}
+
+/*side bar end*/
+
+.mainRoom_topBar {
+    height: 40px;
+    border-bottom: 1px solid rgb(80, 80, 80);
+    margin-bottom: 7px;
+}
+
+.mainRoom_menu {
+    margin-left: 50px;
+}
+
+/*mainRoom screen start*/
+.createRoomSetting, .connectRoomSetting, .useRuleMenu, .nameChangeSetting {
+    display: none;
+}
+
+/*메인 페이지 시작*/
+.mainNewsMenu {
+    position: relative;
+}
+.mainNewsMenu > div {
+    position: absolute;
+    top: 0;
+}
+/*메인 페이지 끝*/
+
+/*이름변경 시작*/
+
+.nameChangeSetting {
+    justify-content: center;
+}
+
+.nameChangeSetting > div {
+    position: absolute;
+    top: 20%;
+    border: 2px solid black;
+    width: 280px;
+    height: 180px;
+}
+
+.menu_myName {
+    margin-top: 15px;
+    white-space: nowrap;
+    overflow-x: auto;
+    width: 230px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+#main_nameChangeInp {
+    margin-top: 15px;
+    display: block;
+    box-sizing: border-box;
+    width: 230px;
+    height: 45px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
+    text-align: center;
+} #main_nameChangeInp:focus {
+    border-color: skyblue;
+}
+
+.nameChangeBtn {
+    display: block;
+    background-color: black;
+    color: white;
+    width: 230px;
+    height: 35px;
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 16px;
+} .nameChangeBtn:active {
+    background-color: rgb(70, 70, 70);
+}
+
+/*이름변경 끝*/
+
+/*사용 규칙 시작*/
+.useRuleMenu > div {
+    position: absolute;
+    max-width: 700px;
+    top: 20%;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+}
+/*사용 규칙 끝*/
+
+/*방 생성 시작*/
+.createRoomSetting > div {
+    position: absolute;
+    top: 20%;
+    border: 2px solid black;
+    left: 0;
+    right: 0;
+    width: 400px;
+    height: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.createRoomSetting > div > div {
+    margin-top: 20px;
+}
+
+.createRoom_privateSetting {
+    display: none;
+}
+
+.createRoom_privateSetting[isPrivate="true"] {
+    display: block;
+}
+
+.createRoom_passWord {
+    width: 280px;
+    display: block;
+    height: 40px;
+    text-align: center;
+    font-size: 16px;
+}
+
+.createRoom_isJoinCheck {
+    display: block;
+}
+
+.modeInfo {
+    word-break: keep-all;
+    padding: 10px;
+    display: inline-block;
+    margin-top: 10px;
+    text-align: justify;
+}
+
+#createRoomBtn {
+    display: block;
+    background-color: black;
+    color: white;
+    width: 230px;
+    height: 35px;
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 16px;
+} #createRoomBtn:active {
+    background-color: rgb(70, 70, 70);
+}
+/*방 생성 끝*/
+
+/*방 접속 시작*/
+.connectRoomSetting > div {
+    position: absolute;
+    top: 20%;
+    left: 0;
+    right: 0;
+    box-shadow: 0 0 5px black;
+    width: 300px;
+    height: 200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.connectRoomSetting > div > h3 {
+    margin-top: 10px;
+    width: 280px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.connectRoomNameInp {
+    text-transform: uppercase;
+    display: block;
+    width: 280px;
+    box-sizing: border-box;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    height: 50px;
+    text-align: center;
+}
+
+.roomJoin_errorMsg {
+    color:red;
+    display: block;
+    width: 280px;
+    box-sizing: border-box;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.connectRoomBtn {
+    width: 280px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    height: 30px;
+}
+
+.roomWaitingRoom {
+    display: none;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 100vh;
+    width: 100vw;
+
+    z-index: 9;
+
+    background-color: white;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+@keyframes rotate-loading {
+    0%  {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.waiting_loadingBar {
+    border: 2px solid transparent;
+    border-color: transparent #E45635 transparent #E45635;
+    animation: rotate-loading 1.5s linear 0s infinite normal;
+    transform-origin: 50% 50%;
+    width: 70px;
+    height: 70px;
+    border-radius: 100%;
+    margin: 60px;
+}
+
+.waiting_title {
+    text-shadow: 0px 0px 3px blue;
+    color: white;
+    font-size: 25px;
+    font-weight: 400;
+}
+
+.waiting_quit {
+    background-color: #00000000;
+    border-color: skyblue;
+    border-radius: 20px;
+    width: 150px;
+    height: 70px;
+    font-weight: 600;
+    font-size: 15px;
+    color:rgb(135, 142, 235);
+}
+/*방 접속 끝*/
+
+/*방 메뉴 시작*/
+.ESC_INFO {
+    background-color: #1E2021;
+    color: white;
+    opacity: 0.9;
+    z-index: 11;
+    position: fixed;
+    top: 4%;
+    padding: 15px;
+    left: 0;
+    right: 0;
+    box-shadow: 0px 2px 4px black;
+    margin: 2px auto;
+    max-width: 550px;
+    border-radius: 5px;
+    width: 80vw;
+}
+
+.roomMenu {
+    display: none;
+    position: absolute;
+    flex-direction: column;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    overflow: hidden;
+    min-width: 500px;
+}
+
+.userMenu_list {
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    position: absolute;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: auto;
+    display: flex;
+    padding: 5px;
+}
+
+.roomMenu_topBar {
+    height: 45px;
+    flex-shrink: 0;
+    box-shadow: 0 0 9px gray;
+    z-index: 1;
+    background-color: white;
+    flex-direction: row;
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+}
+
+.roomMenu_roomCode {
+    font-weight: bold;
+    font-size: 23px;
+    margin-left: 10px;
+}
+
+.roomMenu_showMenu {
+    background-color: white;
+    min-width: 100px;
+    max-width: 300px;
+    width: 40vw;
+    z-index: 7;
+    position: absolute;
+    display: none;
+    padding: 10px;
+    box-shadow: 2px 2px 4px 1px black;
+    border-radius: 4px;
+    flex-direction: column;
+}
+
+.roomMenu_showMenu > * {
+    width: 100%;
+    height: 26px;
+    margin: 5px 0;
+}
+
+.roomMenu_vote {
+    width: 60vw;
+    max-width: 500px;
+    min-width: 250px;
+    z-index: 7;
+    position: absolute;
+    display: none;
+    box-shadow: 2px 2px 4px 1px black;
+    border-radius: 4px;
+    flex-direction: column;
+    background-color: white;
+    height: 70vh;
+    max-height: 650px;
+    min-height: 200px;
+    background-color: rgb(238, 144, 144);
+}
+
+.vote_bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40px;
+    border-top: 2px solid gainsboro;
+    margin: 0 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.roomVote_addItem {
+    width: 60vw;
+    max-width: 550px;
+    min-width: 350px;
+    z-index: 7;
+    position: absolute;
+    display: none;
+    box-shadow: 2px 2px 4px 1px black;
+    border-radius: 4px;
+    flex-direction: column;
+    background-color: white;
+    height: 70vh;
+    max-height: 650px;
+    min-height: 220px;
+    background-color: rgb(238, 144, 144);
+}
+.roomVote_addItem_result {
+    position: absolute;
+    bottom: 45px;
+    left: 0;
+    right: 0;
+    top: 0;
+    margin-top: 8px;
+    padding: 0 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.roomVote_addItem_bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40px;
+    border-top: 2px solid gainsboro;
+    margin: 0 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.vote_bottom > img:hover + .vote_bottom_info, .vote_bottom > input:hover + .vote_bottom_info {
+    transform: scale(1);
+    opacity: 85%;
+}
+
+.vote_label_list, .vote_setting_list {
+    position: absolute;
+    top: 0;
+    bottom: 45px;
+    left: 0;
+    right: 0;
+    overflow-y: auto;
+    padding: 4px;
+    margin-top: 3px;
+}
+
+.vote_setting_list {
+    display: none;
+}
+
+.vote_setting_list_title {
+    margin: 0;
+    padding: 5px;
+    border-bottom: 1px solid black;
+    box-sizing: border-box;
+    height: 32px;
+}
+
+.vote_setting_votes {
+    position: absolute;
+    overflow-y: auto;
+    box-sizing: border-box;
+    top: 35px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 4px;
+}
+
+.vote_setting_votes > div {
+    margin: 4px;
+    box-shadow: 1px 1px 2px 1px black;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    padding: 5px;
+    background-color: rgb(255, 240, 240);
+    justify-content: space-between;
+    margin-bottom: 10px;
+    word-break: break-all;
+    overflow: auto;
+}
+
+.vote_setting_votes > div[click="true"] {
+    background-color: rgb(163, 188, 255);
+    color: white;
+    font-weight: bold;
+}
+
+.vote_list_box {
+    margin: 4px;
+    box-shadow: 1px 1px 2px 1px black;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    padding: 5px;
+    background-color: rgb(255, 240, 240);
+    justify-content: space-between;
+    margin-bottom: 10px;
+    align-items: center;
+}
+
+.vote_list_box[click="true"] {
+    background-color: rgb(163, 188, 255);
+}
+
+.vote_list_box[click="true"] > .vote_list_title {
+    color: white;
+    font-weight: bold;
+}
+
+.vote_list_title {
+    overflow-x: auto;
+    padding-right: 15px;
+    box-sizing: border-box;
+    max-width: 70%;
+    word-break: break-all;
+}
+.vote_list_num {
+    position: relative;
+    box-sizing: border-box;
+    color: orange;
+    font-weight: bold;
+    max-width: 30%;
+}
+
+.vote_box_quest {
+    display: none;
+}
+
+.vote_bottom_info {
+    position: absolute;
+    background-color: #1E2021;
+    box-shadow: 1px 1px 1px black;
+    min-width: 140px;
+    color: white;
+    padding: 8px;
+    border-radius: 3px;
+    transition: all 0.4s;
+    transform: scale(0);
+    bottom: 50px;
+    opacity: 0;
+    text-align: center;
+    z-index: 5;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.vote_bottom > img {
+    width: 30px;
+    height: 30px;
+}
+
+.roomMenu_roolet {
+    min-width: 180px;
+    max-width: 300px;
+    width: 40vw;
+    z-index: 7;
+    position: absolute;
+    display: none;
+    padding: 10px;
+    box-shadow: 2px 2px 4px 1px black;
+    border-radius: 4px;
+    flex-direction: column;
+    background-color: white;
+}
+
+.vote_addItem_info {
+    border: 2px dotted #9c7800;
+    margin: 3px;
+    padding: 5px;
+    width: 100%;
+    max-height: 60px;
+    overflow-y: auto;
+}
+
+.vote_addItem_plus_info {
+    position: absolute;
+    background-color: #1E2021;
+    box-shadow: 1px 1px 1px black;
+    min-width: 140px;
+    color: white;
+    padding: 8px;
+    border-radius: 3px;
+    transition: all 0.4s;
+    transform: scale(0);
+    bottom: 5px;
+    opacity: 0;
+    text-align: center;
+    z-index: 5;
+}
+.vote_addItem_answer_setting {
+    display: none;
+    position: absolute;
+    bottom: 12px;
+}
+.vote_addItem_addVote {
+    width: 30px;
+    height: 30px;
+    margin: 5px auto;
+    bottom: 45px;
+    position: absolute;
+}
+.vote_addItem_addVote:hover + .vote_addItem_plus_info {
+    transform: scale(1);
+    opacity: 85%;
+}
+
+.roomMenu_roolet > * {
+    width: 100%;
+    margin: 5px 0;
+}
+
+.roomVote_addItem_bottom > input[type="button"] {
+    width: 100px;
+    height: 30px;
+}
+
+.roolet_items > div {
+    width: 100%;
+    height: 32px;
+    text-align: center;
+    border-radius: 2px;
+    box-shadow: 1px 1px 3px 2px black;
+    padding: 3px 2px;
+    overflow: hidden;
+    box-sizing: border-box;
+    margin: 5px 0;
+    flex-shrink: 0;
+}
+.roolet_items > div[isRoolet="true"] {
+    background-color: rgb(0, 81, 255);
+    color: white;
+    font-weight: 800;
+    font-size: 17px;
+}
+
+.roolet_items {
+    min-height: 180px;
+    max-height: 300px;
+    height: 20vh;
+    border: 1px solid gray;
+    padding: 5px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+.vote_addItem_voteList {
+    width: 100%;
+    padding: 5px;
+    position: absolute;
+    top: 80px;
+    bottom: 90px;
+    overflow-y: auto;
+    box-sizing: border-box;
+}
+
+.vote_addItem_voteList > div {
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    background-color: rgb(255, 240, 240);
+    box-shadow: 1px 1px 2px 1px black;
+    word-break: break-all;
+    padding: 3px;
+    position: relative;
+    margin-bottom: 7px;
+}
+
+.vote_addItem_voteList > div > button {
+    background-color: #00000000;
+    border: none;
+    position: absolute;
+    right: 0;
+}
+.vote_addItem_voteList > div > button:hover {
+    color: rgb(0, 120, 255);
+}
+
+.vote_addItem_vote_select, .vote_addItem_vote_quest {
+    flex-shrink: 0;
+}
+
+.vote_addItem_vote_info {
+    min-height: 20px;
+    border: 2px dotted #9c7800;
+    width: 100%;
+    border-radius: 5px;
+    margin: 0 4px;
+    overflow: auto;
+    margin-right: 18px;
+}
+
+.roolet_items > div:first-child {
+    margin-top: 15%;
+}
+
+.roolet_items > div:last-child {
+    margin-bottom: 100%;
+}
+
+.roomMenu_roolet_start, .roomMenu_roolet_cancel {
+    height: 30px;
+}
+.roomMenu_roolet_start {
+    background-color: rgb(0, 150, 255);
+    color: white;
+}.roomMenu_roolet_start:hover {
+    background-color: rgb(0, 120, 255);
+}
+
+.roomMenu_roolet_cancel {
+    background-color: white;
+    color: rgb(0, 81, 255);
+}.roomMenu_roolet_cancel:hover {
+    background-color: whitesmoke;
+}
+
+#roomMenu_menu {
+    color: rgb(0, 81, 255);
+    background-color: white;
+    border-radius: 5px;
+    width: 100px;
+    height: 27px;
+    margin-right: 15px;
+}
+
+#roomMenu_out {
+    background-color: rgb(0, 174, 255);
+    color: whitesmoke;
+    border-radius: 5px;
+    width: 100px;
+    height: 27px;
+    margin-right: 15px;
+}
+
+.roomMenu_container {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+/*방 왼쪽 메뉴 시작*/
+.roomLeftSideBar {
+    display: flex;
+    flex-shrink: 0;
+    height: 100%;
+    width: 200px;
+    flex-direction: column;
+    position: relative;
+    -ms-user-select: none;
+    -moz-user-select: -moz-none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    user-select:none;
+    transition: all 0.7s;
+    left: 0;
+}
+
+.roomLeftSideBar[hide="true"] {
+    width: 0;
+}
+
+.roomLeftSideBar[hide="true"] > .roomLeftSideBar_hideMenu {
+    display: block;
+    position: fixed;
+    left: 0;
+    right: auto;
+}
+.roomLeftSideBar[hide="true"] .selectBox {
+    display: none;
+}
+
+.roomLeftSideBar_hideMenu {
+    display: none;
+    position: absolute;
+    right: 0;
+    z-index: 5;
+    margin-top: 5px;
+}
+
+.roomLeftSideBar_hideMenu_chk {
+    width: 0;
+    height: 0;
+}
+
+.roomLeftSideBar_hideMenu_img {
+    content: url("../img/free-icon-left-arrow_271220.png");
+    width: 15px;
+    height: 15px;
+    opacity: 0.8;
+    border: 1px solid rgb(36, 36, 36);
+    padding: 4px;
+    border-radius: 3px;
+}
+
+.roomLeftSideBar_hideMenu_chk:checked + .roomLeftSideBar_hideMenu_img {
+    content: url("../img/free-cion-right-arrow_271228.png");
+}
+
+.roomLeftSideBar:hover > .roomLeftSideBar_hideMenu {
+    display: block;
+}
+
+.selectBox {
+    padding: 0;
+    margin: 0;
+}
+
+#roomleftside_userbtn {
+    display: inline-block;
+    margin-top: 5px;
+    border: 1px solid black;
+    transform-origin: 100% 0%;
+    border-bottom: none;
+    width: 60px;
+    border-top-left-radius: 13px;
+    margin-left: 3px;
+    background-color: rgb(220, 220, 220);
+    border-top-right-radius: 100%;
+    cursor: help;
+}
+
+#roomleftside_userallowbtn {
+    display: inline-block;
+    margin-top: 5px;
+    border: 1px solid black;
+    transform-origin: 100% 0%;
+    border-bottom: none;
+    width: 60px;
+    background-color: rgb(220, 220, 220);
+    opacity: 40%;
+    border-top-left-radius: 13px;
+    border-top-right-radius: 100%;
+    cursor: help;
+}
+
+.userAllowNum {
+    display: none;
+    width: 13px;
+    height: 13px;
+    background-color: red;
+    border-radius: 100%;
+    position: absolute;
+    left: 115px;
+    top: 3px;
+    border: 1px solid rgb(61, 61, 61, 0.9);
+    font-size: 10px;
+    font-weight: 900;
+    text-align: center;
+}
+
+.isMessageURL {
+    color: blue;
+    text-decoration: underline;
+}
+
+.isMessageURL:hover {
+    cursor: pointer;
+}
+
+.roomLeftSideBar_menu {
+    height: 100%;
+    position: relative;
+}
+
+.userList, .allowRequList {
+    background-color: rgb(220, 220, 220);
+    height: 100%;
+    box-shadow: 0 0 6px gray;
+    overflow-y: auto;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.allowRequList {
+    display: none;
+}
+
+#roomleftside_userbtn_info, #roomleftside_userallowbtn_info {
+    position: absolute;
+    background-color: #1E2021;
+    box-shadow: 1px 1px 1px black;
+    width: 210px;
+    color: white;
+    margin-top: 10px;
+    padding: 8px;
+    border-radius: 3px;
+    transition: all 0.4s;
+    transform: scale(0);
+    opacity: 0;
+    z-index: 5;
+} #roomleftside_userbtn_info {
+    margin-left: 7px;
+} #roomleftside_userbtn_info:before {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: -9px;
+    left: 12px;
+    height: 0;
+    width: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #1E2021;
+}#roomleftside_userbtn:hover ~ #roomleftside_userbtn_info {
+    transform: scale(1);
+    opacity: 85%;
+}
+#roomleftside_userallowbtn_info {
+    margin-left: 50px;
+} #roomleftside_userallowbtn_info:before {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: -9px;
+    left: 30px;
+    height: 0;
+    width: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #1E2021;
+} #roomleftside_userallowbtn:hover ~ #roomleftside_userallowbtn_info {
+    transform: scale(1);
+    opacity: 85%;
+}
+
+.userBox_ifMe {
+    width: 6px;
+    height: 6px;
+    display: inline-block;
+    background-color: gray;
+    border-radius: 50%;
+    border: 1px solid black;
+    margin: 0 5px;
+    flex-shrink: 0;
+}
+
+.userBox_ifAdmin > img {
+    width: 100%;
+    height: 100%;
+}
+
+.userBox_ifAdmin {
+    width: 16px;
+    height: 16px;
+    margin-left: 3px;
+    flex-shrink: 0;
+    margin-bottom: 2px;
+}
+
+.userBox_ifSil {
+    width: 18px;
+    height: 18px;
+    padding: 2px;
+    flex-shrink: 0;
+    cursor: pointer;
+}
+
+.userBox_name, .allowBox_name {
+    width: 100%;
+    overflow-x: scroll;
+    cursor: pointer;
+}
+
+.allowBox_name {
+    margin-right: 10px;
+}
+
+.allowBox_denyBtn, .allowBox_allowBtn {
+    width: 20px;
+    height: 20px;
+    margin: 5px;
+    border: 1px solid rgb(77, 77, 77);
+    box-shadow: 1px 1px 1px rgb(77, 77, 77);
+    border-radius: 100%;
+}
+
+.allowBox_denyBtn {
+    background-color: red;
+}
+
+.allowBox_allowBtn {
+    background-color: greenyellow;
+}
+
+.userList_userBox  {
+    display: flex;
+    align-items: center;
+    padding: 3px;
+}
+
+.allowList_allowBox {
+    display: flex;
+    align-items: center;
+    padding: 3px 6px;
+}
+
+/*방 왼쪽 메뉴 끝 */
+
+/*방 중앙 메뉴 시작*/
+.roomVideo {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    flex-basis: auto;
+    overflow-y: hidden;
+    position: relative;
+    -ms-user-select: none;
+    -moz-user-select: -moz-none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    user-select:none;
+}
+
+
+.roomVideo_playerList {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+    align-items: center;
+    overflow-y: auto;
+    flex-wrap: wrap;
+    margin-bottom: 25px;
+    position: absolute;
+    top: 0;
+    bottom: 50px;
+}
+
+.videoBox_PlayerList {
+    width: 330px;
+    min-width: 210px;
+    height: 200px;
+    display: inline-block;
+    margin: 10px;
+    border-radius: 10px;
+    border: solid 4px black;
+    box-sizing: border-box;
+    color: white;
+    text-align: center;
+    word-break: break-all;
+    overflow-y: hidden;
+    padding: 15px;
+    position: relative;
+
+    background-image: url("../img/logo.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.videoBox_PlayerList[isTalk="true"] {
+    box-shadow: 0 0 4px 3px rgb(96, 211, 148);
+}
+
+.videoBox_playerNameTag {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: #141616;
+    color: aliceblue;
+    transform: scale(0);
+    opacity: 0.85;
+    margin: 3px;
+    border-radius: 4px;
+    padding: 4px 8px;
+    z-index: 1;
+    transition: all 0.2s;
+}
+
+.desktopBox_PlayerList {
+    width: 330px;
+    min-width: 210px;
+    height: 200px;
+    display: inline-block;
+    margin: 10px;
+    border-radius: 10px;
+    border: solid 4px black;
+    box-sizing: border-box;
+    color: white;
+    text-align: center;
+    word-break: break-all;
+    overflow-y: hidden;
+    padding: 15px;
+    position: relative;
+}
+
+.desktopBox_PlayerList > video {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.roomVideo:hover .videoBox_playerNameTag {
+    transform: scale(1);
+}
+
+.voicecam_videoBox {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+}
+
+/* 방 중앙 밑 메뉴 시작 */
+.roomVideo_bottomBar {
+    height: 50px;
+    flex-shrink: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background: linear-gradient( 0deg, black, #00000000 );
+    position: absolute;
+    bottom: 0;
+    z-index: 3;
+}
+
+.roomVideo_bottomBar > * {
+    top: -23px;
+    margin: 10px;
+    position: relative;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    cursor: help;
+}
+
+.roomVideo_bottomBar > *:disabled {
+    background-color: rgb(70, 70, 70);
+    opacity: 0.9;
+}
+
+.roomVideo_bottomBar > *[isChecked="true"] {
+    background-color: rgb(130, 130, 130);
+}
+
+.roomVideo_bottomBar > *[isChecked="true"]:hover {
+    background-color: rgb(80, 80, 80);
+}
+
+#roomVoiceOnOffChk[isChecked="true"]:not() {
+    background-color: white;
+}
+
+#roomVoiceOnOffChk img {
+    max-width: 30px;
+    max-height: 30px;
+}
+
+#roomVideoOnOffChk[isChecked="true"]:not() {
+    background-color: white;
+}
+
+#roomVideoOnOffChk img {
+    max-width: 25px;
+    max-height: 25px;
+}
+
+#roomDesktopOnOffChk[isChecked="true"]:not() {
+    background-color: white;
+}
+
+#roomDesktopOnOffChk img {
+    max-width: 25px;
+    max-height: 25px;
+}
+
+
+
+.roomVideo_bootomBar_BtnInfo {
+    position: absolute;
+    background-color: #1E2021;
+    box-shadow: 1px 1px 1px black;
+    width: 140px;
+    height: 20px;
+    color: white;
+    padding: 8px;
+    border-radius: 3px;
+    transition: all 0.4s;
+    transform: scale(0);
+    top: -70px;
+    opacity: 0;
+    text-align: center;
+    z-index: 5;
+}.roomVideo_bootomBar_BtnInfo:nth-child(2) {
+    margin-right: 150px;
+}.roomVideo_bootomBar_BtnInfo:nth-child(6) {
+    margin-left: 150px;
+}.roomVideo_bootomBar_BtnInfo:after {
+    content: "";
+    position: absolute;
+    right: 45%;
+    bottom: -9px;
+    left: 45%;
+    height: 0;
+    width: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid #1E2021;
+}.roomVideo_bottomBar > button:hover + .roomVideo_bootomBar_BtnInfo {
+    transform: scale(1);
+    opacity: 85%;
+}
+/* 방 중앙 밑 메뉴 끝 */
+
+/*방 중앙 메뉴 끝*/
+
+/*방 채팅 메뉴 시작*/
+.roomUserChat {
+    display: flex;
+    width: 300px;
+    background-color: white;
+    flex-shrink: 0;
+    box-shadow: 0 0 6px gray;
+    flex-direction: column;
+    position: relative;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.roomUserChat_topbar > img {
+    margin-left: 20px;
+    width: 15px;
+    height: 15px;
+}
+.roomUserChat_topbar > h5 {
+    margin: 5px 0 5px 0;
+    display: inline-block;
+}
+.roomUserChat_topbar {
+    padding: 5px;
+    box-shadow: 0 0 6px gray;
+    flex-shrink: 0;
+    position: absolute;
+    top: 0;
+    max-height: 50px;
+    right: 0;
+    left: 0;
+}
+
+.chattingResult {
+    overflow-y: auto;
+    position: absolute;
+    top: 37px;
+    bottom: 60px;
+    width: 100%;
+}
+
+.chattingSendBox {
+    display: flex;
+    height: 30px;
+    margin: 20px auto;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0 10px;
+}
+
+#chatMsgInp {
+    width: 300px;
+    margin-right: 5px;
+    height: 28px;
+    flex-shrink: 1;
+    box-sizing: border-box;
+    border-radius: 6px;
+} #chatMsgInp:focus {
+    border-color: teal;
+}
+
+#chatSendBtn {
+    width: 28px;
+    height: 28px;
+    flex-shrink: 1;
+    box-sizing: border-box;
+    padding: 1px;
+    background-color: #00000000;
+    border: 2px dotted teal;
+    border-radius: 8px;
+}
+
+#chatSendBtn > img {
+    width: 20px;
+    height: 20px;
+}
+
+.chatmsg_name {
+    font-weight: bold;
+    margin-left: 5px;
+    width: 200px;
+    overflow-x: hidden;
+}
+
+.chatmsg_time {
+    float: right;
+    margin-right: 5px;
+    color: gray;
+    font-size: 13px;
+}
+
+.chatmsg_msg {
+    word-break: break-all;
+    margin-top: 0;
+    padding: 0 13px;
+}
+
+.chat_emotion {
+    width: 100%;
+    height: 100%;
+}
+/*방 채팅 메뉴 끝*/
+
+.userSettingMenu {
+    background-color: white;
+    border-radius: 4px;
+    box-shadow: 0px 0px 4px black;
+    width: 150px;
+    display: none;
+    position: absolute;
+    padding: 20px;
+    flex-direction: column;
+    z-index: 15;
+}
+
+.userSettingMenu_userName {
+    font-weight: 900;
+    font-size: 20px;
+
+    overflow-y: auto;
+}
+
+.userSettingMenu_cancel, .roomMenuNameCancelBtn {
+    margin-top: 20px;
+    width: 100%;
+    height: 25px;
+    background-color: white;
+    border-radius: 4px;
+    color: rgb(0, 81, 255);
+    border: 2px solid gray;
+}
+
+.userSettingMenu_nameChangeBtn, .roomMenuNameChangeBtn {
+    width: 100%;
+    height: 25px;
+    border-radius: 4px;
+    color: white;
+    background-color: rgb(0, 81, 255);
+    border: 1px solid blue;
+}
+
+.roomMenu_nameChangeSetting {
+    background-color: white;
+    border-radius: 4px;
+    box-shadow: 0px 0px 4px black;
+    width: 150px;
+    display: none;
+    position: fixed;
+    top: 25%;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+    flex-direction: column;
+    z-index: 15;
+}
+
+.roomMenu_nameChangeInp {
+    width: 100%;
+    height: 30px;
+    border-radius: 4px;
+    border: 2px solid gray;
+    box-sizing: border-box;
+    margin-bottom: 5px;
+}
+
+.userSettingMenu_quitBtn, .userSettingMenu_adminRemove, .userSettingMenu_adminAdd {
+    width: 100%;
+    height: 30px;
+    border-radius: 4px;
+    border: 2px solid red;
+    background-color: rgb(255, 81, 0);
+    box-sizing: border-box;
+    margin-bottom: 5px;
+}
+
+.userSettingMenu_quitBtn {
+    background-color: rgb(255, 20, 0);
+}
+
+.userSettingMenu_adminAdd {
+    border: 2px solid rgb(255, 115, 0);
+    background-color: rgb(255, 175, 71);
+}
+
+.roomQuestDatas {
+    display: none;
+}
+
+/*방 메뉴 끝*/

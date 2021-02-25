@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="shortcut icon" href="/img/logo.png">
+    <link rel="stylesheet" href="./css/popup.css">
+    <script defer src="/scripts/popup/popup.js"></script>
+</head>
+<body>
+    <input type="hidden" id="questionId" value=<%= id %>>
+    <div class="questionTitle"><%= title %></div>
+    <div class="questionPage">
+        <div class="questionInfo"></div>
+        <div class="questionBoxs"></div>
+    </div>
+    <div class="questionBottom">
+        <span class="questionMoveToLeft">&lt;</span>
+        <label class="pageInfo">
+            <input type="number" class="pageMove">/
+            <span class="pageNum"></span>
+        </label>
+        <span class="questionMoveToRight">&gt;</span>
+        <input type="button" value="제출" class="questionSubmit">
+    </div>
+</body>

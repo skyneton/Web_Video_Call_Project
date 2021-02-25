@@ -1,0 +1,176 @@
+*::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+} *::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    background-color: rgba(24, 24, 24, 0.3);
+}
+
+body {
+    padding: 3px 10px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    min-width: 300px;
+    min-height: 400px;
+}
+.questionTitle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    min-height: 30px;
+    max-height: 60px;
+    border-bottom: 1px solid black;
+    padding: 5px;
+    font-size: 22px;
+    font-weight: bold;
+    word-break: break-all;
+    overflow: auto;
+    box-sizing: border-box;
+}
+
+.questionPage {
+    position: absolute;
+    top: 63px;
+    bottom: 23px;
+    left: 0;
+    right: 0;
+    box-sizing: border-box;
+    padding: 5px;
+    margin-bottom: 5px;
+}
+.questionInfo {
+    height: 25%;
+    position: absolute;
+    top: 0;
+    overflow: auto;
+    left: 0;
+    right: 0;
+    box-sizing: border-box;
+}
+.questionBoxs {
+    top: 25%;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    overflow: auto;
+    padding: 3px;
+    box-sizing: border-box;
+    position: absolute;
+}
+.questionBoxs > div {
+    background-color: rgb(163, 188, 255);
+    color: white;
+    margin: 4px;
+    box-shadow: 1px 1px 2px 1px black;
+    margin-bottom: 10px;
+    padding: 4px;
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    align-items: center;
+}
+.questionBoxs > div > label {
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+}
+.questionBox_click {
+    margin-right: 8px;
+}
+.questionBox_info {
+    word-break: break-word;
+    overflow-y: auto;
+    width: 100%;
+}
+
+
+.alert {
+    position: fixed;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 400px;
+    min-width: 150px;
+    width: 80vw;
+    z-index: 100;
+    left: 0;
+    right: 0;
+    top: 4px;
+    background-color: white;
+    box-shadow: 0px 0px 4px black;
+    border-radius: 4px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.al_okbtn {
+    color: white;
+    background-color: rgb(0, 81, 255);
+    margin-top: 20px;
+    border: 1px solid blue;
+    border-radius: 3px;
+    width: 50px;
+    height: 30px;
+    align-self: flex-end;
+}
+
+.questionBox_info[contentEditable=true] {
+    border: 2px solid black;
+    border-radius: 5px;
+    box-shadow: 0 0 0 1px white;
+}
+.questionBottom {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 20px;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    -ms-user-select: none;
+    -moz-user-select: -moz-none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    user-select:none;
+}
+
+.questionMoveToLeft, .questionMoveToRight {
+    font-size: large;
+    cursor: pointer;
+}
+
+.questionMoveToLeft:not(*[notpage="true"]):hover, .questionMoveToRight:not(*[notpage="true"]):hover {
+    color: #949494;
+}
+
+.questionMoveToLeft[notpage="true"], .questionMoveToRight[notpage="true"] {
+    color: white;
+    cursor: auto;
+}
+
+.pageInfo {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+}
+
+.pageMove, .pageNum {
+    display: inline-block;
+    max-width: 40px;
+    height: 20px;
+    box-sizing: border-box;
+    font-weight: bold;
+}
+
+.pageMove {
+    max-width: 60px;
+    text-align: right;
+}

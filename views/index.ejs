@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/img/logo.png">
+    <link rel="stylesheet" href="./css/main.css">
+    <script defer src="/socket.io/socket.io.js"></script>
+    <script defer src="/scripts/call.js"></script>
+    <script defer src="/scripts/client.js"></script>
+    <script defer src="/scripts/peerConn.js"></script>
+    <script defer src="/scripts/event.js"></script>
+
+    <title><%= title %></title>
+</head>
+<body>
+    <div id="startUIMenu">
+        <div>
+            <input type="text" maxlength="30" id="startNameSetting" placeholder="닉네임" onkeydown="if(event.keyCode == 13) document.getElementsByClassName('serverStart')[0].click()" onfocus="this.placeholder = ''" onblur="this.placeholder = '닉네임'">
+            <input type="button" value="시작" class="serverStart">
+        </div>
+    </div>
+
+    <div class="mainRoom">
+        <div class="mainRoom_topBar"></div>
+        <div class="mainRoom_sidebar">
+            <div class="mainRoomCreate"><img src="./img/add.png" alt="방 생성"><span>방 생성</span></div>
+            <div class="mainRoomConnect"><img src="./img/join.png" alt="방 접속"><span>방 접속</span></div>
+            <div class="mainRule"><img src="./img/rule.png" alt="이용 약관"><span>이용 약관</span></div>
+            <div class="mainNameChange"><img src="./img/name.png" alt="이름 변경"><span>이름 변경</span></div>
+        </div>
+        <div class="mainRoom_menu">
+            <div class="alertList"></div>
+            <div class="mainRoom_screen">
+                <div class="mainNewsMenu">
+                    <div>
+                        <h3>사용 방법</h3>
+                        <ul>
+                            <li>왼쪽 메뉴에 있는 방 생성을 통해 방을 생성할 수 있습니다.</li>
+                            <li>이미 생성된 방을 접속하기 위해선 방 코드를 받은 후 방 접속 메뉴에서 들어갈 수 있습니다.</li>
+                            <li>이름을 변경하실려면 이름 변경 메뉴로 이동 후 변경이 가능합니다.</li>
+                            <li>마이크 사용시 중앙 메뉴 하단의 마이크 모양을 클릭하여 / 모양이 없어지게 한후 사용할 수 있습니다.</li>
+                        </ul>
+                        <br><br>
+                        <h3>주의 사항</h3>
+                        <ul>
+                            <li>마이크 사용 후 딜레이가 있을 수 있습니다.</li>
+                            <li>본인에겐 본인의 목소리가 들리지 않습니다. 브라우저 2개를 이용하여 접속할 경우에만 가능합니다.</li>
+                            <li>소리 끉김 현상이 있을 수 있습니다.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="createRoomSetting">
+                    <div>
+                        <div>
+                            <label><input type="radio" name="createRoom_Mode" checked>Public</label>
+                            <label><input type="radio" name="createRoom_Mode">Private</label>
+                        </div>
+                        <div class="createRoom_privateSetting">
+                            <input type="password" class="createRoom_passWord" maxlength="40" placeholder="비밀번호">
+                            <label class="createRoom_isJoinCheck"><input type="checkbox" class="createRoom_isJoinCheckCb"> 접속 확인</label>
+                        </div>
+                        <span class="modeInfo">방코드를 입력시 누구나 접속이 가능합니다.</span>
+                        <input type="button" value="생성" id="createRoomBtn">
+                    </div>
+                </div>
+                <div class="connectRoomSetting">
+                    <div>
+                        <h3>방 접속</h3>
+                        <input type="text" class="connectRoomNameInp" maxlength="9" placeholder="방 코드" onfocus="this.placeholder = ''" onblur="this.placeholder = '방 코드'">
+                        <span class="roomJoin_errorMsg"></span>
+                        <input type="button" class="connectRoomBtn" value="접속">
+                    </div>
+                </div>
+                <div class="useRuleMenu">
+                    <div>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque similique, non reprehenderit ea repellendus repudiandae hic, libero nihil impedit consequuntur recusandae cum blanditiis odit perspiciatis deserunt atque esse exercitationem ipsa placeat labore corrupti eveniet! Vitae iusto quisquam officiis adipisci nostrum alias autem reiciendis deleniti rerum doloribus nobis, dolorum, omnis voluptas tempora. Sit placeat praesentium quasi, dolores optio nulla doloremque, ipsum molestiae necessitatibus sint velit dolor consequuntur earum perferendis officiis nesciunt soluta, dicta nam. Voluptates ab nobis dolores ipsam, explicabo ea optio laboriosam ad quidem quo et saepe inventore velit excepturi eum sint soluta. Officiis modi id quas incidunt, dignissimos nemo at suscipit porro ea error omnis facere tenetur soluta delectus est debitis corporis doloribus sint atque in laudantium, quaerat vitae magnam. Non libero, minima est impedit amet molestiae quia, voluptatum corporis, similique aperiam nostrum atque aliquid tenetur illo odit ipsum quibusdam voluptates debitis dolores perspiciatis voluptate tempore id ut. Dolores alias debitis id aliquid laudantium quidem placeat provident accusantium temporibus non impedit eligendi adipisci ipsa quia at reprehenderit, molestias nam, esse rem quaerat praesentium omnis perferendis ab. Officia ipsum, accusantium soluta expedita natus aliquam quia dignissimos ea neque maiores minima hic quod error exercitationem itaque culpa molestias velit quam dolor?
+                    </div>
+                </div>
+                <div class="nameChangeSetting">
+                    <div>
+                        <span class="menu_myName"></span>
+                        <input type="text" maxlength="30" id="main_nameChangeInp" onkeydown="if(event.keyCode == 13) document.getElementsByClassName('nameChangeBtn')[0].click()" placeholder="닉네임" onfocus="this.placeholder = ''" onblur="this.placeholder = '닉네임'">
+                        <input type="button" value="변경" class="nameChangeBtn">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="roomWaitingRoom">
+        <div class="waiting_title">방장이 허용해주기를 기다리는중...</div>
+        <div class="waiting_loadingBar"></div>
+        <input class="waiting_quit" type="button" value="나가기">
+    </div>
+
+    <div class="roomMenu">
+        <div class="userMenu_list">
+            <div class="userSettingMenu">
+                <div class="userSettingMenu_userName"></div>
+                <div class="userSettingMenu_menu"></div>
+                <button class="userSettingMenu_cancel">취소</button>
+            </div>
+            <div class="roomMenu_showMenu">
+                <input type="button" value="룰렛" class="roomMenu_showMenu_roolet">
+                <input type="button" value="취소" class="roomMenu_showMenu_cancel">
+            </div>
+            <div class="roomMenu_roolet">
+                <div class="roolet_items"></div>
+                <input type="button" value="돌리기" class="roomMenu_roolet_start">
+                <input type="button" value="취소" class="roomMenu_roolet_cancel">
+            </div>
+            <div class="roomMenu_vote">
+                <div class="vote_label_list"></div>
+                <div class="vote_setting_list">
+                    <h3 class="vote_setting_list_title"></h3>
+                    <div class="vote_setting_votes"></div>
+                </div>
+                <div class="vote_bottom">
+                    <img src='./img/add.png' class="vote_bottom_add">
+                    <div class="vote_bottom_info">클릭시 문제 그룹을 추가합니다.</div>
+
+                    <img src='./img/minus.png' class="vote_bottom_remove">
+                    <div class="vote_bottom_info">클릭시 문제 그룹을 제거합니다.</div>
+
+                    <img src='./img/free-icon-gear-889744.png' class="vote_bottom_setting">
+                    <div class="vote_bottom_info">클릭시 문제 그룹 세부설정으로<br>변경합니다.</div>
+
+                    <img src="./img/send.png" class="vote_bottom_send">
+                    <div class="vote_bottom_info">클릭시 문제 그룹을<br>모두에게 전송합니다.</div>
+
+                    <input type="button" value="완료" class="vote_bottom_complete">
+                    <div class="vote_bottom_info">클릭시 문제 설정을 종료합니다.</div>
+                </div>
+            </div>
+            <div class="roomVote_addItem">
+                <div class="roomVote_addItem_result">
+                    <div class="vote_addItem_info" contenteditable>이곳에 문제의 설명을 작성해주세요.</div>
+                    <div class="vote_addItem_voteList"></div>
+                    <img src='./img/add.png' class="vote_addItem_addVote">
+                    <div class="vote_addItem_plus_info">클릭시 문제 그룹을 추가합니다.</div>
+                    <div class="vote_addItem_answer_setting">
+                        <label><input type="radio" name="vote_addItem_answerType" class="vote_addItem_answerType_one" value="1">선택시 정답</label>
+                        <label><input type="radio" name="vote_addItem_answerType" class="vote_addItem_answerType_all" value="2">전부 선택시 정답</label>
+                    </div>
+                </div>
+                <div class="roomVote_addItem_bottom">
+                    <input type="button" value="취소" class="roomVote_addItem_bottom_cancel">
+                    <input type="button" value="완료" class="roomVote_addItem_bottom_complete">
+                </div>
+            </div>
+        </div>
+
+        <div class="roomMenu_nameChangeSetting">
+            <div>
+                <span class="roomMenuNameChange_myName"></span>
+                <input type="text" maxlength="30" class="roomMenu_nameChangeInp" onkeydown="if(event.keyCode == 13) document.getElementsByClassName('roomMenuNameChangeBtn')[0].click()" placeholder="닉네임" onfocus="this.placeholder = ''" onblur="this.placeholder = '닉네임'">
+                <input type="button" value="변경" class="roomMenuNameChangeBtn">
+                <button class="roomMenuNameCancelBtn">취소</button>
+            </div>
+        </div>
+
+        <div class='roomMenu_topBar'>
+            <span class="roomMenu_roomCode"></span>
+            <div>
+                <input type="button" value="메뉴" id="roomMenu_menu">
+                <input type="button" value="나가기" id="roomMenu_out">
+            </div>
+        </div>
+
+        <div class='roomMenu_container'>
+            <div class="roomLeftSideBar">
+                <label class="roomLeftSideBar_hideMenu"><input type="checkbox" class="roomLeftSideBar_hideMenu_chk"><img class="roomLeftSideBar_hideMenu_img"></label>
+                <div class="selectBox">
+                    <button id="roomleftside_userbtn">users</button>
+                    <div id="roomleftside_userbtn_info">클릭시 방에있는<br>유저 목록을 불러옵니다.</div>
+                </div>
+                <div class="userAllowNum"></div>
+                <div class="roomLeftSideBar_menu">
+                    <div class="userList"></div>
+                </div>
+            </div>
+            <div class="roomVideo">
+                <div class="roomVideo_playerList"></div>
+                <div class="roomVideo_bottomBar">
+                    <button id="roomVideoOnOffChk"><img src="./img/no_videocam.png"></img></button>
+                    <div class="roomVideo_bootomBar_BtnInfo">카메라 사용</div>
+                    <button id="roomDesktopOnOffChk"><img src="./img/no_television.png"></img></button>
+                    <div class="roomVideo_bootomBar_BtnInfo">화면 공유</div>
+                    <button id="roomVoiceOnOffChk"><img src="./img/free-icon-mute-709552.png"></img></button>
+                    <div class="roomVideo_bootomBar_BtnInfo">마이크 음소거 해제</div>
+                </div>
+            </div>
+            <div class="roomUserChat">
+                <div class="roomUserChat_topbar"><img src="./img/chat.png" alt="채팅"> <h5>채팅</h5></div>
+                <div class="chattingResult"></div>
+                <div class="chattingSendBox">
+                    <input type="text" id="chatMsgInp" maxlength="100" placeholder="채팅">
+                    <button id="chatSendBtn"><img src="./img/send.png" alt="전송"></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="roomQuestDatas"></div>
+    </div>
+
+    <form class="popupHelpForm" method="POST" accept-charset="UTF-8">
+        <input type="hidden" name="title" class="popupHelpForm_title">
+        <input type="hidden" name="id" class="popupHelpForm_id">
+    </form>
+</body>
+</html>
