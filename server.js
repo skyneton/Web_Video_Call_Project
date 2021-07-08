@@ -19,19 +19,24 @@ app.use(express.static('public'));
 require('./router/main')(app);
 
 const https = require('https');
+const http = require('http');
 
+/*
 const port = 443;
 const server = https.createServer(serverOption, app).listen(port, () => {
     log("::Server Open:: PORT: " + port);
 });
 
-const http = require('http');
 http.createServer(function (req, res) {
     res.writeHead(301, {
         "Location": "https://" + req.headers['host'] + ":"+ port + req.url
     });
     res.end();
 }).listen(80);
+
+*/
+
+const server = http.createServer(app).listen(80);
 
 const turn = require('node-turn');
 new turn({
